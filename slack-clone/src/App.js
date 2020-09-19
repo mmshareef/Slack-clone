@@ -2,15 +2,13 @@ import React from "react";
 import "./App.css";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Chat from "./Chat";
-import { useStateValue } from "./StateProvider";
 import Login from "./Login";
+import { useStateValue } from "./StateProvider";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
-  // const [user, setUser] = useState(null);
   const [{ user }, dispatch] = useStateValue();
-
   return (
     <div className="app">
       <Router>
@@ -26,7 +24,7 @@ function App() {
                   <Chat />
                 </Route>
                 <Route path="/">
-                  <h1>Welcome</h1>
+                  <h1>Welcome to slack</h1>
                 </Route>
               </Switch>
             </div>

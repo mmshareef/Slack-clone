@@ -1,19 +1,17 @@
-import React from "react";
-import "./Login.css";
 import { Button } from "@material-ui/core";
+import React from "react";
 import { auth, provider } from "./firebase";
-import { actionTypes } from "./reducer";
+import "./Login.css";
 import { useStateValue } from "./StateProvider";
-
+import { actionTypes } from "./reducer";
 function Login() {
-  const [state, disaptch] = useStateValue();
-
+  const [state, dispatch] = useStateValue();
   const signIn = () => {
     auth
       .signInWithPopup(provider)
       .then((result) => {
         console.log(result);
-        disaptch({
+        dispatch({
           type: actionTypes.SET_USER,
           user: result.user,
         });
@@ -22,16 +20,17 @@ function Login() {
         alert(error.message);
       });
   };
+
   return (
     <div className="login">
       <div className="login__container">
         <img
-          src="https://i.pcmag.com/imagery/reviews/07td46ju7p6lLVb0QGwc5VF-6..v_1569479844.jpg"
-          alt=""
+          src="https://lh3.googleusercontent.com/lV1DhBeSuikQy6fLPhgfNHUxDqterNlur4oB1Z_Yr0NOSiWwQOD0g8gWCjVf1mmMuw"
+          alt="slack img"
         />
-        <h1>Signin/SignUp to Slack </h1>
+        <h1>Sign in to Slack Clone </h1>
         <p>spe.slack.com</p>
-        <Button onClick={signIn}>Sign/SignUp in with Google</Button>
+        <Button onClick={signIn}>Sign In with Google</Button>
       </div>
     </div>
   );
